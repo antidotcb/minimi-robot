@@ -29,12 +29,9 @@ FILE_LIST		+= $(wildcard ($LOCAL_PATH)/minimi/**/*.cpp)
 FILE_LIST		+= $(wildcard ($LOCAL_PATH)/minimi/**/**/*.cpp)
 FILE_LIST		+= $(wildcard ($LOCAL_PATH)/minimi/**/**/**/*.cpp)
 
-
 LOCAL_SRC_FILES	:= $(FILE_LIST:$(LOCAL_PATH)/%=%)
 # Android-11
 LOCAL_SRC_FILE	+= gl3stub.c
-
-				   
 
 LOCAL_LDLIBS	:= -llog
 LOCAL_LDLIBS	+= -lEGL

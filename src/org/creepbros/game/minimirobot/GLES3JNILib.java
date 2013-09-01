@@ -20,11 +20,13 @@ package org.creepbros.game.minimirobot;
 
 public class GLES3JNILib {
 
-     static {
-         System.loadLibrary("minimi");
-     }
+	static {
+		System.loadLibrary("minimi");
+	}
 
-     public static native void init();
-     public static native void resize(int width, int height);
-     public static native void step();
+	public static native void init();
+
+	public static native void resize(int width, int height);
+
+	public static native void step();
 }
