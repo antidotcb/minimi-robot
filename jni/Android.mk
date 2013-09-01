@@ -16,11 +16,34 @@ LOCAL_PATH:= $(call my-dir)
 
 include $(CLEAR_VARS)
 
-LOCAL_MODULE    := libgles3jni
-LOCAL_CFLAGS    := -Werror
-LOCAL_SRC_FILES := gles3jni.cpp \
-				   RendererES2.cpp \
-				   RendererES3.cpp
-LOCAL_LDLIBS    := -llog -lGLESv3 -lEGL
+LOCAL_MODULE	:= minimi
+# Android-11
+LOCAL_CFLAGS	:= -Werror -DDYNAMIC_ES3
+# Android-18
+# LOCAL_CFLAGS	:= -Werror
+LOCAL_CFLAGS	:= -Wno-psabi
+
+FILE_LIST		:= $(wildcard ($LOCAL_PATH)/*.cpp)
+FILE_LIST		+= $(wildcard ($LOCAL_PATH)/minimi/*.cpp)
+FILE_LIST		+= $(wildcard ($LOCAL_PATH)/minimi/**/*.cpp)
+FILE_LIST		+= $(wildcard ($LOCAL_PATH)/minimi/**/**/*.cpp)
+FILE_LIST		+= $(wildcard ($LOCAL_PATH)/minimi/**/**/**/*.cpp)
+
+
+LOCAL_SRC_FILES	:= $(FILE_LIST:$(LOCAL_PATH)/%=%)
+# Android-11
+LOCAL_SRC_FILE	+= gl3stub.c
+
+				   
+
+LOCAL_LDLIBS	:= -llog
+LOCAL_LDLIBS	+= -lEGL
+LOCAL_LDLIBS	+= -landroid
+LOCAL_LDLIBS	+= -lOpenSLES
+LOCAL_LDLIBS	+= -lz
+# Android-11
+LOCAL_LDLIBS	+= -lGLESv2
+# Android-18
+# LOCAL_LDLIBS	+= -lGLESv3
 
 include $(BUILD_SHARED_LIBRARY)

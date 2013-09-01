@@ -21,7 +21,7 @@ package org.creepbros.game.minimirobot;
 public class GLES3JNILib {
 
      static {
-         System.loadLibrary("gles3jni");
+         System.loadLibrary("minimi");
      }
 
      public static native void init();
