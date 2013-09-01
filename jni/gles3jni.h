@@ -20,7 +20,9 @@
 #include <android/log.h>
 #include <math.h>
 
-#if DYNAMIC_ES3
+//#define DYNAMIC_ES3
+
+#ifdef DYNAMIC_ES3
 #include "gl3stub.h"
 #else
 #include <GLES3/gl3.h>
